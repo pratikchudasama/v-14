@@ -68,23 +68,25 @@ type ContentCopy = {
   heicPartialPrefix: string
 }
 
-const defaultHero = '/IMG_7069.jpg'
-const ankuHero = '/IMG_7069.jpg'
-const defaultStoryImage = '/AP1GczMH_-KJ9cVszt7V03uxTbKQbRVg.jpg'
-const ankuStoryImage = '/AP1GczPBeafW1RaIrS-03wRQbmzKDvGC.jpg'
+const assetUrl = (fileName: string) => `${import.meta.env.BASE_URL}${fileName.replace(/^\/+/, '')}`
+
+const defaultHero = assetUrl('IMG_7069.jpg')
+const ankuHero = assetUrl('IMG_7069.jpg')
+const defaultStoryImage = assetUrl('AP1GczMH_-KJ9cVszt7V03uxTbKQbRVg.jpg')
+const ankuStoryImage = assetUrl('AP1GczPBeafW1RaIrS-03wRQbmzKDvGC.jpg')
 
 const fallbackPhotos = [
-  '/AP1GczOEqpkwR3LQZUpJFng9azkRITu3.jpg',
-  '/AP1GczNefmEVguxJGFCi-_jo8Mq_jenu.jpg',
-  '/AP1GczMQDXBDM5UdIPfQi1F91MmLXuQH.jpg',
-  '/AP1GczPtNIq8UTr6MCxXNcEI004qiZBy.jpg',
+  assetUrl('AP1GczOEqpkwR3LQZUpJFng9azkRITu3.jpg'),
+  assetUrl('AP1GczNefmEVguxJGFCi-_jo8Mq_jenu.jpg'),
+  assetUrl('AP1GczMQDXBDM5UdIPfQi1F91MmLXuQH.jpg'),
+  assetUrl('AP1GczPtNIq8UTr6MCxXNcEI004qiZBy.jpg'),
 ]
 
 const ankuFallbackPhotos = [
-  '/AP1GczMqSAJPdiNldlgPMx05hAIQ0A0Y.jpg',
-  '/AP1GczPMcOXpVkNxrO-egeYAC-QA1XgS.jpg',
-  '/AP1GczPiUurAYZKEFUYCjnwHH750ZODg.jpg',
-  '/AP1GczMHj_ZmO9F8xS4FM90FmEOzyDPI.jpg',
+  assetUrl('AP1GczMqSAJPdiNldlgPMx05hAIQ0A0Y.jpg'),
+  assetUrl('AP1GczPMcOXpVkNxrO-egeYAC-QA1XgS.jpg'),
+  assetUrl('AP1GczPiUurAYZKEFUYCjnwHH750ZODg.jpg'),
+  assetUrl('AP1GczMHj_ZmO9F8xS4FM90FmEOzyDPI.jpg'),
 ]
 
 const defaultContent: ContentCopy = {
@@ -556,7 +558,7 @@ function App() {
         {showPrizeModal && !isAnkuVersion && (
           <div className="prizeOverlay" onClick={() => setShowPrizeModal(false)}>
             <div className="prizeDialog" onClick={(event) => event.stopPropagation()}>
-              <img src="/7crore.gif" alt="7 crore celebration" />
+              <img src={assetUrl('7crore.gif')} alt="7 crore celebration" />
               <button type="button" className="prizeClose" onClick={() => setShowPrizeModal(false)}>
                 Close
               </button>
@@ -576,7 +578,7 @@ function App() {
           {answer === 'yes' ? (
             <div className="successGifWrap">
               <img
-                src={isAnkuVersion ? '/unbothered-not-amused.gif' : '/tomjerry.gif'}
+                src={isAnkuVersion ? assetUrl('unbothered-not-amused.gif') : assetUrl('tomjerry.gif')}
                 alt="Celebration"
                 className="successGif"
               />
